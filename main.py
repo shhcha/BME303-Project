@@ -1,6 +1,11 @@
 import numpy
 from matplotlib import pyplot, colors
 
+#  _._     _,-'""`-._
+# (,-.`._,'(       |\`-/|
+#     `-.-' \ )-`( , o o)
+#           `-    \`_`"'- meow
+
 class c_Moth:
     pass
 class c_Light:
