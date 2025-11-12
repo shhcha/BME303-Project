@@ -1,16 +1,6 @@
 import numpy
 from matplotlib import pyplot, colors
 
-#  _._     _,-'""`-._
-# (,-.`._,'(       |\`-/|
-#     `-.-' \ )-`( , o o)
-#           `-    \`_`"'- meow
-
-class c_Moth:
-    pass
-class c_Light:
-    pass
-
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#FF0000','#00FF00','#0000FF']):
         self._Index = 0
@@ -29,8 +19,9 @@ class c_Grid:
         tempState = self._CurrentState
         
         #Iterating thru every pos
-        for i in range(tempState.size()[0]):
-            for j in range(tempState.size()[1]):
+        
+        for i in range(tempState.shape[0]):
+            for j in range(tempState.shape[1]):
                 print(i,j)
 
         tempState += 1
