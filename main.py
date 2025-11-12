@@ -5,6 +5,7 @@ from matplotlib import pyplot, colors
 # (,-.`._,'(       |\`-/|
 #     `-.-' \ )-`( , o o)
 #           `-    \`_`"'- meow
+# pee pee poo poo
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#FF0000','#00FF00','#0000FF']):
