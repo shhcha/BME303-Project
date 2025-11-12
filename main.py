@@ -22,11 +22,16 @@ class c_Grid:
 
     def update(self):
         tempState = self._CurrentState
-        # Do something to tempState
+        
+        #Iterating thru every pos
+        for i in range(tempState.size()[0]):
+            for j in range(tempState.size()[1]):
+                print(i,j)
+
         tempState += 1
         self._CurrentState = tempState
 
-MyGrid = c_Grid(numpy.random.randint(0,3,(40,40)))
+MyGrid = c_Grid(numpy.random.randint(0,3,(30,30)))
 
 MyGrid.display(show_plot=True)
 MyGrid.update()
