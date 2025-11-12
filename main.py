@@ -5,6 +5,8 @@ from matplotlib import pyplot, colors
 # (,-.`._,'(       |\`-/|
 #     `-.-' \ )-`( , o o)
 #           `-    \`_`"'- meow
+import moth
+
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
