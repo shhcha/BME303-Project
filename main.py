@@ -24,8 +24,9 @@ class c_Grid:
         tempState = self._CurrentState
         
         #Iterating thru every pos
-        for i in range(tempState.size()[0]):
-            for j in range(tempState.size()[1]):
+        
+        for i in range(tempState.shape[0]):
+            for j in range(tempState.shape[1]):
                 print(i,j)
 
         tempState += 1
