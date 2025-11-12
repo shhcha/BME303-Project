@@ -1,6 +1,11 @@
 import numpy
 from matplotlib import pyplot, colors
 
+#  _._     _,-'""`-._
+# (,-.`._,'(       |\`-/|
+#     `-.-' \ )-`( , o o)
+#           `-    \`_`"'- meow
+
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#FF0000','#00FF00','#0000FF']):
         self._Index = 0
