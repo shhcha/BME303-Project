@@ -9,6 +9,9 @@ import moth
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
+        # black = nothing
+        # blue = light
+        # red - moths
         self._Index = 0
         self._InitialState = grid
         self._CurrentState = self._InitialState
@@ -34,7 +37,7 @@ class c_Grid:
         self._Index += 1
         self.display(show_plot=True)
 
-MyGrid = c_Grid(numpy.random.randint(0,3,(30,30)))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025]))
 
 MyGrid.display(show_plot=True)
 for i in range(5):
