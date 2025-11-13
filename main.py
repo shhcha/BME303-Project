@@ -5,7 +5,10 @@ from matplotlib import pyplot, colors
 # (,-.`._,'(       |\`-/|
 #     `-.-' \ )-`( , o o)
 #           `-    \`_`"'- meow
+
 import moth
+import rules
+import lights
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
@@ -22,7 +25,8 @@ class c_Grid:
         if show_plot == True:
             fig,ax1 = pyplot.subplots(nrows=1,ncols=1)
             ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
-            fig.savefig(f"./out/graph_{self._Index}")
+            fig.savefig(f"./out/graph_{self._Index}", bbox_inches='tight', pad_inches=0.02)
+            pyplot.close()
 
     def update(self):
         tempState = self._CurrentState
