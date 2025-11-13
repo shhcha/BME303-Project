@@ -1,9 +1,16 @@
 import numpy
 
 #Returns tuple(x,y) delta to the nearest light 
-def findClosestLight(grid:numpy.ndarray, mothX:int, mothY:int):
-    shape = grid.shape      
-    for i in range(-shape[0],shape[0]): #So we check all 
+def findClosestEntity(grid:numpy.ndarray, mothX:int, mothY:int, entityToFind:str='L'):
+    shape = grid.shape
+    if entityToFind == 'L':
+        entityToFind = 2
+    elif entityToFind == 'M':
+        entityToFind = 1
+    else:
+        raise TypeError(f"EntityType {entityToFind} is not valid")
+
+    for i in range(-shape[0],shape[0]): 
         if (mothX+i >= shape[0]) or (mothX+i < 0):
             continue
 
@@ -11,20 +18,7 @@ def findClosestLight(grid:numpy.ndarray, mothX:int, mothY:int):
             if (mothY+j >= shape[1]) or (mothY+j < 0):
                 continue
 
-            if (grid[mothX+i][mothY+j] == 1):
-                return (i,j)
-
-def findClosestMoth(grid:numpy.ndarray, mothX:int, mothY:int):
-    shape = grid.shape      
-    for i in range(-shape[0],shape[0]): #So we check all 
-        if (mothX+i >= shape[0]) or (mothX+i < 0):
-            continue
-
-        for j in range(-shape[1],shape[1]):
-            if (mothY+j >= shape[1]) or (mothY+j < 0):
-                continue
-
-            if (grid[mothX+i][mothY+j] == 0):
+            if (grid[mothX+i][mothY+j] == entityToFind):
                 return (i,j)
 
 def nextMove(grid:numpy.ndarray, mothX:int, mothY:int):
