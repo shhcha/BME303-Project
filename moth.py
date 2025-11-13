@@ -23,7 +23,7 @@ def findClosestEntity(grid:numpy.ndarray, mothX:int, mothY:int, entityToFind:str
 
 def nextMove(grid:numpy.ndarray, mothX:int, mothY:int):
     deltaX, deltaY = 0,0
-    lightRelPos = findClosestLight(grid,mothX,mothY)
+    lightRelPos = findClosestEntity(grid,mothX,mothY,'L')
     print(lightRelPos)
     max_movement = 5
     
@@ -42,4 +42,8 @@ def nextMove(grid:numpy.ndarray, mothX:int, mothY:int):
         deltaY = round(max_movement * factorY)
     else:
         deltaY = round(deltaY*factorY)
+
+    deltaX += numpy.random.choice((-1,0,1))
+    deltaY += numpy.random.choice((-1,0,1))
+    
     return (deltaX, deltaY)
