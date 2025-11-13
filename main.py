@@ -42,3 +42,13 @@ MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025]))
 MyGrid.display(show_plot=True)
 for i in range(5):
     MyGrid.update()
+
+def plotDynamics(data):
+    fig, axes = pyplot.subplots(figsize=(7, 6))
+    axes.plot(data[0], data[2], label='moths', color='blue')  # Plot the moth population over time
+    axes.plot(data[0], data[3], label='lights', color='red')  # Plot the light population over time
+    axes.set_xlabel('Time (months)')  # Label the x-axis
+    axes.set_ylabel('Number of individuals')  # Label the y-axis
+    axes.legend(bbox_to_anchor=(.3, 1), fontsize=13, fancybox=False, shadow=False, frameon=False)  # Add a legend
+    pyplot.savefig('temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
+    pyplot.close()  # Close the plot to free memory
