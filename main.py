@@ -1,11 +1,14 @@
 import numpy
 from matplotlib import pyplot, colors
+import moth
+
+
 
 #  _._     _,-'""`-._
 # (,-.`._,'(       |\`-/|
 #     `-.-' \ )-`( , o o)
 #           `-    \`_`"'- meow
-import moth
+
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
