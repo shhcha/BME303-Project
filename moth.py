@@ -13,8 +13,26 @@ def findClosestLight(grid:numpy.ndarray, mothX:int, mothY:int):
 
             if (grid[mothX+i][mothY+j] == 1):
                 return (i,j)
-                
+
 def nextMove(grid:numpy.ndarray, mothX:int, mothY:int):
     deltaX, deltaY = 0,0
+    lightRelPos = findClosestLight(grid,mothX,mothY)
+    print(lightRelPos)
+    max_movement = 5
+    
+    factorX = -1 if lightRelPos[0] < 0 else 1
+    factorY = -1 if lightRelPos[1] < 0 else 1
+    
+    deltaX = abs(lightRelPos[0])
+    deltaY = abs(lightRelPos[1])
 
+    if (abs(deltaX) >= max_movement):
+        deltaX = round(max_movement * factorX)
+    else:
+        deltaX = round(deltaX*factorX)
+
+    if (abs(deltaY) >= max_movement):
+        deltaY = round(max_movement * factorY)
+    else:
+        deltaY = round(deltaY*factorY)
     return (deltaX, deltaY)
