@@ -35,3 +35,5 @@ def newLightRandom:
         for j in range(cols):
             if grid[i, j] == 1:
                 # percentage that a new might appear
+
+# yay
