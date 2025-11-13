@@ -6,6 +6,10 @@ from matplotlib import pyplot, colors
 #     `-.-' \ )-`( , o o)
 #           `-    \`_`"'- meow
 
+# Empty =  0
+# Moth  =  1
+# Light =  2
+
 import moth
 import rules
 import lights
@@ -13,8 +17,8 @@ import lights
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
         # black = nothing
-        # blue = light
         # red - moths
+        # blue = light
         self._Index = 0
         self._InitialState = grid
         self._CurrentState = self._InitialState
