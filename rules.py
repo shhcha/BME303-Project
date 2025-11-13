@@ -14,13 +14,9 @@ class rules:
             return 1
 
     def moth_birth(self):
-
-
+        
 
     def lights(self):
-
-
-
 
 
     def dimming(self):

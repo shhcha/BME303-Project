@@ -11,8 +11,8 @@ from matplotlib import pyplot, colors
 # Light =  2
 
 import moth
-import rules
-import lights
+#import rules
+#import lights
 
 class c_Grid:
     def __init__(self, grid:numpy.array, colorset:list=['#000000','#FF0000','#0000FF']):
@@ -45,7 +45,7 @@ class c_Grid:
         self._Index += 1
         self.display(show_plot=True)
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(60,60),p=[0.965, 0.025, 0.010]))
 
 MyGrid.display(show_plot=True)
 for i in range(5):
