@@ -89,7 +89,7 @@ def plotDynamics(data): #MOVE AWAY
 ### Start Running
 numpy.random.seed(0)
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(200,200),p=[0.960, 0.0375, 0.0025]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(100,100),p=[0.960, 0.0375, 0.0025]))
 # MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
 # MyGrid._InitialState[10,10] = 2
 # MyGrid._InitialState[50,10] = 2
