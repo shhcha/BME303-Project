@@ -1,11 +1,15 @@
 import numpy as np
+import random
+
+from fontTools.varLib.avar.plan import sanitizeSlant
+
 
 # function for growth of light sources
 # Every graph, there is a _% (high) chance for the adjacent box will get another light.
 def newLightAdjacent():
     for i in range(rows):
         for j in range(cols):
-            if grid[i,j] == 1:
+            if grid[i,j] == 2: #uhhh we coded light as 2 so whoops
                 # what can be affected:
                 # [i-1,j+1] <- top right
                 # [i-1,j] <- right
@@ -20,20 +24,35 @@ def newLightAdjacent():
                         if x == 0 and y == 0:
                             continue # or pass?
                         else:
-                            # here was the og generation: MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025]))
+                            # here was the og generation: MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025])
                             # i dont know how to finish this
                             continue
 # Every graph, there is a _% (low) chance that the light will go away.
 def newlightDies:
     for i in range(rows):
         for j in range(cols):
-            if grid[i, j] == 1:
-                # certain percentage that itll turn black
+            if grid[i, j] == 2:
+                # certain percentage that it'll turn black
+                r = random.randint(1,10)
+                if r <= 3: #just making the chance it'll turn black 30% as a filler
+                    grid[i,j] = 0
+                else:
+                    continue
+            else: #if the square is empty or a moth
+                continue
 # Every graph, there is a _% (unsure) chance that another light will appear randomly.
 def newLightRandom:
     for i in range(rows):
         for j in range(cols):
-            if grid[i, j] == 1:
+            if grid[i, j] == 0:
                 # percentage that a new might appear
+                # For now a filler % is 50
+                r = random.randint(1,10)
+                if r <=5:
+                    grid[i, j] = 2
+                else:
+                    continue
+
+
 
 # yay
