@@ -11,7 +11,7 @@ from matplotlib import pyplot, colors
 # Light =  2
 
 import moth
-#import rules
+import rules
 #import lights
 
 class c_Grid:
@@ -27,9 +27,12 @@ class c_Grid:
     def display(self, show_plot:bool=False):
         print(self._CurrentState)
         if show_plot == True:
-            fig,ax1 = pyplot.subplots(nrows=1,ncols=1)
+            fig,ax1 = pyplot.subplots(nrows=1,ncols=1, figsize=(16,9))
             ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
-            fig.savefig(f"./out/graph_{self._Index}", bbox_inches='tight', pad_inches=0.02)
+            ax1.set_title(f"ITER:{self._Index}")
+            ax1.set_xlabel("X Pos")
+            ax1.set_ylabel("Y Pos")
+            fig.savefig(f"./out/graph_{self._Index}", bbox_inches='tight', pad_inches=0.2)
             pyplot.close()
 
     def update(self):
@@ -38,7 +41,7 @@ class c_Grid:
         
         for i in range(tempState.shape[0]):
             for j in range(tempState.shape[1]):
-                pass
+                rules.update()
 
         tempState += 1
         self._CurrentState = tempState
