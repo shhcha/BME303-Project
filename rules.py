@@ -3,24 +3,6 @@ import moth
 import math
 
 
-def moth_death(grid, x, y ):
-    lightDist = moth.findClosestEntity(grid,x,y, entityToFind ='L')
-    if math.sqrt((lightDist[0])**2 + lightDist[1]**2) >= 2:
-        return 0
-    else:
-        math.sqrt((lightDist[0]) ** 2 + lightDist[1] ** 2) < 2
-        return 1
-
-def moth_birth(grid, x, y):
-    mothDist = moth.findClosestEntity(grid, x, y, entityToFind = 'M')
-    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=2:
-        # find a nearby 0 and replace it to be a 1 somehow
-        pass
-    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
-        return 2
-
-
-
 def lights():
     pass
 
@@ -31,5 +13,28 @@ def dimming():
 def mothMove():
     pass
 
-def update(): #a function that checks what square it is, and calls the other functions accordingly
+def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
+    #print(f"Updating Moth:{x}:{y}")
+    moth.tryMovement(newGrid, np.array([x,y]))
     pass
+def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
+    #print(f"Updating Light:{x}:{y}")
+    pass
+def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
+    #print(f"Updating Empty:{x}:{y}")
+    return
+    
+
+def update(oldGrid:np.ndarray, newGrid:np.ndarray): #a function that checks what square it is, and calls the other functions accordingly
+    for i in range(oldGrid.shape[0]):
+            for j in range(oldGrid.shape[1]):
+                if (oldGrid[i][j] == 0):
+                    updateEmpty(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
+                elif (oldGrid[i][j] == 1):
+                    updateMoth(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
+                elif (oldGrid[i][j] == 2):
+                    updateLight(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
+                else:
+                    print(f"Wrong Value {i}:{j}")
+    
+    
