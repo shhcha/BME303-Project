@@ -41,8 +41,7 @@ class c_Grid: #Class of numpy array, with graph and update func
     
 
     def update(self, dataPool:numpy.ndarray):
-        newState = self._CurrentState.copy()
-        #Iterating thru every pos
+        newState = self._CurrentState.copy()    # Setup new data
 
         dP = rules.update(self._CurrentState, newState)
         #print(f"returned: {dP}")
@@ -87,10 +86,11 @@ def plotDynamics(data): #MOVE AWAY
 
 
 ### Start Running
-numpy.random.seed(0)
+
+numpy.random.seed(0) #TESTING
 
 MyGrid = c_Grid(numpy.random.choice([0,1, 2],(100,100),p=[0.960, 0.0375, 0.0025]))
-# MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
+# MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035])) TESTING
 # MyGrid._InitialState[10,10] = 2
 # MyGrid._InitialState[50,10] = 2
 # MyGrid._InitialState[50,50] = 2
@@ -103,8 +103,9 @@ iterations = 20
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
-    print(f"Staring frame{i}")
+    print(f"Staring Frame{i+1}")
     MyGrid.update(dataPool=dynamics)
+
 create_gif()
 plotDynamics(dynamics)
 

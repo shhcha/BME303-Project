@@ -27,6 +27,7 @@ def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
 
 def update(oldGrid:np.ndarray, newGrid:np.ndarray): #a function that checks what square it is, and calls the other functions accordingly, and returns dyanmics data
     count0, count1, count2 = 0,0,0
+    # For row, column, check value and follow updaterules according to type
     for i in range(oldGrid.shape[0]):
             for j in range(oldGrid.shape[1]):
                 if (oldGrid[i][j] == 0):
@@ -40,6 +41,7 @@ def update(oldGrid:np.ndarray, newGrid:np.ndarray): #a function that checks what
                     updateLight(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
                 else:
                     print(f"Wrong Value {i}:{j}")
+    # Return counts (for dynamics)
     return (tuple([count0, count1, count2]))
     
     
