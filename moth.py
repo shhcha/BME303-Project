@@ -23,11 +23,10 @@ def _Move(grid:numpy.ndarray, mothPos:numpy.ndarray, mothDeltaPos:numpy.ndarray)
     try:
         # Move only if desired square is empty
         if (grid[tuple(mothPos+mothDeltaPos)] == 0):
-            #print(f"{mothDeltaPos}")
             grid[tuple(mothPos+mothDeltaPos)] = 1
             grid[tuple(mothPos)] = 0
         else:
-            #print(f"Cannot move moth: Space already taken")
+            #print(f"Cannot move moth: Space already taken by light or moth")
             pass
     except IndexError:
         #print(f"Cannot move moth: OOR ")
@@ -47,7 +46,7 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
     else:
         raise TypeError(f"EntityType {entityToFind} is not valid")
     
-    closestLoc = tuple([100,100])   # Setup initial closest delta
+    closestLoc = tuple([1000,1000])   # Setup initial closest delta
     for i in range(-shape[0],shape[0]):     # For every row
 
         if (mothPos[0]+i >=shape[0]) or (mothPos[0]+i < 0): # with valid range
@@ -67,7 +66,7 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
     deltaX, deltaY = 0,0
     lightRelPos = findClosestEntity(grid, mothPos,'L')  # Find delta to closest light
     #print(lightRelPos)
-    max_movement = 3 # Change according to total size
+    max_movement = 7 # Change according to total size
     
     factorX = -1 if lightRelPos[0] < 0 else 1   #Setup directionality values
     factorY = -1 if lightRelPos[1] < 0 else 1   #
