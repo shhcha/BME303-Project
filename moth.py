@@ -1,4 +1,5 @@
 import numpy
+import math
 
 ### Rules
 def tryDeath(grid:numpy.ndarray, mothPos:numpy.ndarray ):
@@ -20,10 +21,16 @@ def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
 ### Movement
 def _Move(grid:numpy.ndarray, mothPos:numpy.ndarray, mothDeltaPos:numpy.ndarray):
     try:
-        grid[tuple(mothPos+mothDeltaPos)] = 1
-        grid[tuple(mothPos)] = 0
+        if (grid[tuple(mothPos+mothDeltaPos)] == 0):
+            #print(f"{mothDeltaPos}")
+            grid[tuple(mothPos+mothDeltaPos)] = 1
+            grid[tuple(mothPos)] = 0
+        else:
+            #print(f"Cannot move moth: Space already taken")
+            pass
     except IndexError:
-        print(f"Cannot move moth ")
+        #print(f"Cannot move moth: OOR ")
+        pass
 
 def tryMovement(grid:numpy.ndarray, mothPos:numpy.ndarray):
     _Move(grid, mothPos, findNextMove(grid, mothPos))
@@ -37,17 +44,20 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
         entityToFind = 1
     else:
         raise TypeError(f"EntityType {entityToFind} is not valid")
-
+    closestLoc = tuple([100,100])
     for i in range(-shape[0],shape[0]): 
-        if (mothPos[0]+i >= shape[0]) or (mothPos[0]+i < 0):
+
+        if (mothPos[0]+i >=shape[0]) or (mothPos[0]+i < 0):
             continue
 
         for j in range(-shape[1],shape[1]):
             if (mothPos[1]+j >= shape[1]) or (mothPos[1]+j < 0):
                 continue
+            if ((grid[tuple(mothPos + numpy.array([i,j]))] == entityToFind) and ((math.sqrt((i**2 + j**2) < math.sqrt(closestLoc[0]**2 + closestLoc[1]**2) )))):
 
-            if (grid[tuple(mothPos + numpy.array([i,j]))] == entityToFind):
-                return numpy.array([i,j])
+                closestLoc = tuple([i,j])
+    return closestLoc
+
 
 #Returns ndarray(x,y) delta to move to the nearest light 
 def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
@@ -72,7 +82,6 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
     else:
         deltaY = round(deltaY*factorY)
 
-    deltaX += numpy.random.choice((-1,0,1))
-    deltaY += numpy.random.choice((-1,0,1))
-    
+    deltaX += int(numpy.random.randint(-5,5,1))
+    deltaY += int(numpy.random.randint(-5,5,1))
     return numpy.array([deltaX, deltaY])
