@@ -26,6 +26,12 @@ def newLightAdjacent():
                         else:
                             # here was the og generation: MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025])
                             # i dont know how to finish this
+                            #this is my guess on how to do it
+                            r = random.randint(1,10)
+                            if r <=6: #filler chance is 60%
+                                grid[i + x, j + y] = 2
+                            else:
+                                continue
                             continue
 # Every graph, there is a _% (low) chance that the light will go away.
 def newlightDies:
