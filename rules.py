@@ -19,9 +19,11 @@ def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     pass
 def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Light:{x}:{y}")
-    pass
+    lights.newLightAdjacent(newGrid, x, y)
+    return
 def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Empty:{x}:{y}")
+    lights.newLightRandom(newGrid, x, y)
     return
     
 
@@ -33,12 +35,12 @@ def update(oldGrid:np.ndarray, newGrid:np.ndarray): #a function that checks what
                 if (oldGrid[i][j] == 0):
                     count0 += 1
                     updateEmpty(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
-                elif (oldGrid[i][j] == 1):
-                    count1 += 1
-                    updateMoth(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
                 elif (oldGrid[i][j] == 2):
                     count2 += 1
                     updateLight(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
+                elif (oldGrid[i][j] == 1):
+                    count1 += 1
+                    updateMoth(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
                 else:
                     print(f"Wrong Value {i}:{j}")
     # Return counts (for dynamics)

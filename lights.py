@@ -6,7 +6,7 @@ from fontTools.varLib.avar.plan import sanitizeSlant
 
 # function for growth of light sources
 # Every graph, there is a _% (high) chance for the adjacent box will get another light.
-def newLightAdjacent():
+def newLightAdjacent(grid,rows,cols):
     for i in range(rows):
         for j in range(cols):
             if grid[i,j] == 2: #uhhh we coded light as 2 so whoops
@@ -34,30 +34,23 @@ def newLightAdjacent():
                                 continue
                             continue
 # Every graph, there is a _% (low) chance that the light will go away.
-def newlightDies:
-    for i in range(rows):
-        for j in range(cols):
-            if grid[i, j] == 2:
-                # certain percentage that it'll turn black
-                r = random.randint(1,10)
-                if r <= 3: #just making the chance it'll turn black 30% as a filler
-                    grid[i,j] = 0
-                else:
-                    continue
-            else: #if the square is empty or a moth
-                continue
+def newlightDies(grid,x,y):
+    # certain percentage that it'll turn black
+    r = random.randint(1,10)
+    if r <= 3: #just making the chance it'll turn black 30% as a filler
+        grid[x,y] = 0
+    else:
+        pass #we don't need to check the rows and columns since the update function will do that anyways
+
 # Every graph, there is a _% (unsure) chance that another light will appear randomly.
-def newLightRandom:
-    for i in range(rows):
-        for j in range(cols):
-            if grid[i, j] == 0:
-                # percentage that a new might appear
-                # For now a filler % is 50
-                r = random.randint(1,10)
-                if r <=5:
-                    grid[i, j] = 2
-                else:
-                    continue
+def newLightRandom(grid,x,y):
+    # percentage that a new might appear
+    # For now a filler % is 50
+    r = random.randint(1,10)
+    if r <=5:
+        grid[x, y] = 2
+    else:
+        pass
 
 
 
