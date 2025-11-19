@@ -99,11 +99,11 @@ def plotSpatial(data, fileNumber):
 
 #numpy.random.seed(0) #TESTING
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(60,60),p=[0.960, 0.0375, 0.0025]))
-#MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(80,80),p=[0.960, 0.0375, 0.0025]))
+# MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
 # MyGrid = c_Grid(numpy.zeros((60,60)))
 # MyGrid._InitialState[30,30] = 2 
-# MyGrid._InitialState[30,45] = 1
+# MyGrid._InitialState[30:,10] = 1
 # MyGrid._InitialState[30,15] = 1
 
 
@@ -115,7 +115,7 @@ iterations = 10
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
-    print(f"Staring Frame{i+1}")
+    print(f"Starting Frame{i+1}")
     MyGrid.update(dataPool=dynamics)
 
 create_gif()
