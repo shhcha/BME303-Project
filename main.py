@@ -90,16 +90,16 @@ def plotDynamics(data): #MOVE AWAY
 #numpy.random.seed(0) #TESTING
 
 MyGrid = c_Grid(numpy.random.choice([0,1, 2],(60,60),p=[0.960, 0.0375, 0.0025]))
-# MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035])) TESTING
-# MyGrid._InitialState[10,10] = 2
-# MyGrid._InitialState[50,10] = 2
-# MyGrid._InitialState[50,50] = 2
-# MyGrid._InitialState[10,50] = 2
+#MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
+# MyGrid = c_Grid(numpy.zeros((60,60)))
+# MyGrid._InitialState[30,30] = 2 
+# MyGrid._InitialState[30,45] = 1
+
 
 
 
 MyGrid.display(show_plot=True)
-iterations = 100
+iterations = 10
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
