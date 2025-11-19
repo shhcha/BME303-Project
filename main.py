@@ -94,6 +94,8 @@ MyGrid = c_Grid(numpy.random.choice([0,1, 2],(60,60),p=[0.960, 0.0375, 0.0025]))
 # MyGrid = c_Grid(numpy.zeros((60,60)))
 # MyGrid._InitialState[30,30] = 2 
 # MyGrid._InitialState[30,45] = 1
+# MyGrid._InitialState[30,15] = 1
+
 
 
 

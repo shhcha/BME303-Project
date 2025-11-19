@@ -25,15 +25,20 @@ def _Move(grid:numpy.ndarray, mothPos:numpy.ndarray, mothDeltaPos:numpy.ndarray)
         if (grid[tuple(mothPos+mothDeltaPos)] == 0):
             grid[tuple(mothPos+mothDeltaPos)] = 1
             grid[tuple(mothPos)] = 0
+            return 1
         else:
+            return 0
             #print(f"Cannot move moth: Space already taken by light or moth")
             pass
     except IndexError:
         #print(f"Cannot move moth: OOR ")
+        return 0
         pass
 
 def tryMovement(grid:numpy.ndarray, mothPos:numpy.ndarray):
-    _Move(grid, mothPos, findNextMove(grid, mothPos))
+    if not(_Move(grid, mothPos, findNextMove(grid, mothPos))):
+        _Move(grid, mothPos, findNextMove(grid, mothPos)+findClosestEntity(grid=grid, mothPos=mothPos, entityToFind="E"))
+
 
 #Returns ndarray(x,y) delta to the nearest light 
 def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:str='L'):
@@ -43,6 +48,8 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
         entityToFind = 2
     elif entityToFind == 'M':
         entityToFind = 1
+    elif entityToFind == 'E':
+        entityToFind = 0
     else:
         raise TypeError(f"EntityType {entityToFind} is not valid")
     
@@ -89,8 +96,8 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
     #Setup random deviation in moth movement
     max_deviation = max_movement//2
 
-    deltaX += int(numpy.random.randint(-max_deviation,max_deviation,1))
-    deltaY += int(numpy.random.randint(-max_deviation,max_deviation,1))
+    # deltaX += int(numpy.random.randint(-max_deviation,max_deviation,1))
+    # deltaY += int(numpy.random.randint(-max_deviation,max_deviation,1))
 
     baseMove = numpy.array([deltaX, deltaY], dtype=float)
 
