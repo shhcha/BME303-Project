@@ -24,6 +24,8 @@ def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
 def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Empty:{x}:{y}")
     lights.newLightRandom(newGrid, x, y)
+    lights.newLightDies(newGrid, x, y)
+    lights.newLightAdjacent(newGrid, x, y)
     return
     
 
@@ -38,6 +40,7 @@ def update(oldGrid:np.ndarray, newGrid:np.ndarray): #a function that checks what
                 elif (oldGrid[i][j] == 2):
                     count2 += 1
                     updateLight(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
+
                 elif (oldGrid[i][j] == 1):
                     count1 += 1
                     updateMoth(oldGrid=oldGrid, newGrid=newGrid, x=i,y=j)
