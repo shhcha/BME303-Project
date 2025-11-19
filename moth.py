@@ -96,10 +96,11 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
 
     #Rotation - The way moths move in real life
 
-    #Define rotationAngle, 0 is a straight line, 1 is a complete circle, no approach to desired point
+    #Define rotationAngle, 0 is a straight line, 1 is a complete circle, minimal approach to point
     rotationAngle = 0.75   # Radians
 
     #Rotation Matrix - https://en.wikipedia.org/wiki/Rotation_matrix
+    # rotation in xy-plane by desired rotation angle
     rotationMatrix = numpy.array([
         [numpy.cos(rotationAngle), -numpy.sin(rotationAngle)],
         [numpy.sin(rotationAngle),  numpy.cos(rotationAngle)]
