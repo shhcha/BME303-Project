@@ -84,6 +84,16 @@ def plotDynamics(data): #MOVE AWAY
     pyplot.savefig('out/temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
     pyplot.close()  # Close the plot to free memory
 
+# idk where to put this but this is code for the color bar
+def plotSpatial(data, fileNumber):
+    cmap = colors.ListedColormap(['black', 'blue', 'red'])  # Define custom colors for grass, zebras, and lions
+    pyplot.figure(figsize=(7, 6))
+    pyplot.pcolor(data, cmap=cmap, edgecolors='k', linewidths=1, vmin=0, vmax=2)  # Plot the grid with boundaries
+    cbar = pyplot.colorbar(label="", orientation="vertical", ticks=[0.33, 1, 1.66])  # Add a color bar for clarity
+    cbar.ax.set_yticklabels(['sky', 'moths', 'lights'])  # Set labels for the color bar (grass, zebras, lions)
+    pyplot.savefig('figure_' + str(fileNumber) + '.jpg', bbox_inches='tight',
+                pad_inches=0.02)  # Save the figure as an image
+    pyplot.close()  # Close the plot to free memory
 
 ### Start Running
 
@@ -109,23 +119,3 @@ for i in range(iterations):
 create_gif()
 plotDynamics(dynamics)
 
-def plotDynamics(data): #MOVE AWAY
-    fig, axes = pyplot.subplots(figsize=(7, 6))
-    axes.plot(data[0], data[2], label='moths', color='blue')  # Plot the moth population over time
-    axes.plot(data[0], data[3], label='lights', color='red')  # Plot the light population over time
-    axes.set_xlabel('Time (months)')  # Label the x-axis
-    axes.set_ylabel('Number of individuals')  # Label the y-axis
-    axes.legend(bbox_to_anchor=(.3, 1), fontsize=13, fancybox=False, shadow=False, frameon=False)  # Add a legend
-    pyplot.savefig('temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
-    pyplot.close()  # Close the plot to free memory
-
-# idk where to put this but this is code for the color bar
-def plotSpatial(data, fileNumber):
-    cmap = colors.ListedColormap(['lawngreen', 'blue', 'red'])  # Define custom colors for grass, zebras, and lions
-    pyplot.figure(figsize=(7, 6))
-    pyplot.pcolor(data, cmap=cmap, edgecolors='k', linewidths=1, vmin=0, vmax=2)  # Plot the grid with boundaries
-    cbar = pyplot.colorbar(label="", orientation="vertical", ticks=[0.33, 1, 1.66])  # Add a color bar for clarity
-    cbar.ax.set_yticklabels(['grass', 'zebras', 'lions'])  # Set labels for the color bar (grass, zebras, lions)
-    pyplot.savefig('figure_' + str(fileNumber) + '.jpg', bbox_inches='tight',
-                pad_inches=0.02)  # Save the figure as an image
-    pyplot.close()  # Close the plot to free memory
