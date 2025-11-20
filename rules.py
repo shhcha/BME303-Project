@@ -1,10 +1,8 @@
 import numpy as np
+import lights
 import moth
 import math
 
-
-def lights():
-    pass
 
 
 
@@ -19,13 +17,14 @@ def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     pass
 def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Light:{x}:{y}")
+    #lights.newLightAdjacent(newGrid, x, y)
+    lights.newLightRandom(newGrid, x, y)
+    lights.newLightDies(newGrid, x, y)
     lights.newLightAdjacent(newGrid, x, y)
     return
 def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Empty:{x}:{y}")
-    lights.newLightRandom(newGrid, x, y)
-    lights.newLightDies(newGrid, x, y)
-    lights.newLightAdjacent(newGrid, x, y)
+
     return
     
 

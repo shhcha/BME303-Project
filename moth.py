@@ -46,7 +46,7 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
     # Create shape for local use, determine which grid value to check for given input
     
     gridShape = grid.shape
-    maxDistance = gridShape[0]
+    maxDistance = 30
     searchShape = (maxDistance,maxDistance)
 
     if entityToFind == 'L':
@@ -58,7 +58,7 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
     else:
         raise TypeError(f"EntityType {entityToFind} is not valid")
     
-    closestLoc = tuple([1000,1000])   # Setup initial closest delta
+    closestLoc = tuple([10000,10000])   # Setup initial closest delta
     for i in range(-searchShape[0],searchShape[0]):     # For every row
 
         if (mothPos[0]+i >=gridShape[0]) or (mothPos[0]+i < 0): # with valid range
@@ -70,6 +70,8 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
             # If gridvalue is equal to desired value, and is closer than our current closest delta
             if ((grid[tuple(mothPos + numpy.array([i,j]))] == entityToFind) and ((math.sqrt((i**2 + j**2) < math.sqrt(closestLoc[0]**2 + closestLoc[1]**2) )))):
                 closestLoc = tuple([i,j])   # setup new closest delta, conitnue to next possible square
+    if closestLoc == tuple([10000,10000]):
+        closestLoc = tuple([gridShape[0]//2,gridShape[1]//2])
     return closestLoc
 
 

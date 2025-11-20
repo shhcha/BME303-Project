@@ -99,10 +99,13 @@ def plotSpatial(data, fileNumber):
 
 #numpy.random.seed(0) #TESTING
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(80,80),p=[0.960, 0.0375, 0.0025]))
+mothSpawn = 0.2
+lightSpawn = 0.005
+
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(50,50),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 # MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
 # MyGrid = c_Grid(numpy.zeros((60,60)))
-# MyGrid._InitialState[30,30] = 2 
+#MyGrid._InitialState[25,25] = 2 
 # MyGrid._InitialState[30:,10] = 1
 # MyGrid._InitialState[30,15] = 1
 
@@ -111,7 +114,7 @@ MyGrid = c_Grid(numpy.random.choice([0,1, 2],(80,80),p=[0.960, 0.0375, 0.0025]))
 
 
 MyGrid.display(show_plot=True)
-iterations = 10
+iterations = 60
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
