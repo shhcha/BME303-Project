@@ -76,8 +76,8 @@ def plotDynamics(data): #MOVE AWAY
     # print(f"data[3] = {data[3]}")
     
     fig, axes = pyplot.subplots(figsize=(7, 6))
-    axes.plot(data[0], data[2], label='moths', color='blue')  # Plot the moth population over time
-    axes.plot(data[0], data[3], label='lights', color='red')  # Plot the light population over time
+    axes.plot(data[0], data[2], label='moths', color='red')  # Plot the moth population over time
+    axes.plot(data[0], data[3], label='lights', color='blue')  # Plot the light population over time
     axes.set_xlabel('Time (%TIME_PERIOD%)')  # Label the x-axis
     axes.set_ylabel('Number of individuals')  # Label the y-axis
     axes.legend(bbox_to_anchor=(.3, 1), fontsize=13, fancybox=False, shadow=False, frameon=False)  # Add a legend
@@ -102,7 +102,7 @@ def plotSpatial(data, fileNumber):
 mothSpawn = 0.2
 lightSpawn = 0.005
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(50,50),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(150,150),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 # MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
 # MyGrid = c_Grid(numpy.zeros((60,60)))
 #MyGrid._InitialState[25,25] = 2 
@@ -114,7 +114,7 @@ MyGrid = c_Grid(numpy.random.choice([0,1, 2],(50,50),p=[(1-(mothSpawn+lightSpawn
 
 
 MyGrid.display(show_plot=True)
-iterations = 60
+iterations = 100 
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):

@@ -46,7 +46,7 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
     # Create shape for local use, determine which grid value to check for given input
     
     gridShape = grid.shape
-    maxDistance = 30
+    maxDistance = 40
     searchShape = (maxDistance,maxDistance)
 
     if entityToFind == 'L':
