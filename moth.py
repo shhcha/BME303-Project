@@ -14,6 +14,11 @@ def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
     mothDist = moth.findClosestEntity(grid, mothPos, entityToFind = 'M')
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=2:
         # find a nearby 0 and replace it to be a 1 somehow
+
+        # emptyDist = moth.findClosestEntity(grid, mothPos, entitytoFind = "E" )
+        # if math.sqrt((emptyDist[0] ** 2) + (emptyDist[1]**2)) >=2:
+            #Maybe use this function to find the 0 and turn it into a 1?
+
         pass
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
         return 2

@@ -18,7 +18,7 @@ def newLightAdjacent(grid,x,y):
             else:
                 # here was the og generation: MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025])
                 r = random.random()
-                if r <= 0.05: #filler chance is 10%
+                if r <= 0.05: #filler chance is 5%
                     grid[x + a, y + b] = 2
                 else:
                     continue
