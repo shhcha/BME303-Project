@@ -1,5 +1,6 @@
 import numpy
 import math
+import random
 
 ### Rules
 def tryDeath(grid:numpy.ndarray, mothPos:numpy.ndarray ):
@@ -15,10 +16,11 @@ def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=2:
         # find a nearby 0 and replace it to be a 1 somehow
 
+        # Maybe use this function to find the 0 and turn it into a 1?
         # emptyDist = moth.findClosestEntity(grid, mothPos, entitytoFind = "E" )
-        # if math.sqrt((emptyDist[0] ** 2) + (emptyDist[1]**2)) >=2:
-            #Maybe use this function to find the 0 and turn it into a 1?
-
+        #r = random.randint(1,10)
+        # need to modify to have a probability dependent on the # of moths nearby
+        # if math.sqrt((emptyDist[0] ** 2) + (emptyDist[1]**2)) >=2 and r >= 8:
         pass
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
         return 2
