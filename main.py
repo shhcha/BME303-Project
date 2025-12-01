@@ -33,9 +33,9 @@ class c_Grid: #Class of numpy array, with graph and update func
         if show_plot == True:
             fig,ax1 = pyplot.subplots(nrows=1,ncols=1, figsize=(16,9))
             ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
-            ax1.set_title(f"ITER:{self._Index}")
-            ax1.set_xlabel("X Pos")
-            ax1.set_ylabel("Y Pos")
+            ax1.set_title(f"Week:{self._Index}")
+            ax1.set_xlabel("X Pos (.1 miles)")
+            ax1.set_ylabel("Y Pos (.1 miles)")
             fig.savefig(f"./out/graph_{self._Index}", bbox_inches='tight', pad_inches=0.2)
             pyplot.close()
     
@@ -78,8 +78,8 @@ def plotDynamics(data): #MOVE AWAY
     fig, axes = pyplot.subplots(figsize=(7, 6))
     axes.plot(data[0], data[2], label='moths', color='red')  # Plot the moth population over time
     axes.plot(data[0], data[3], label='lights', color='blue')  # Plot the light population over time
-    axes.set_xlabel('Time (%TIME_PERIOD%)')  # Label the x-axis
-    axes.set_ylabel('Number of individuals')  # Label the y-axis
+    axes.set_xlabel('Time (Weeks)')  # Label the x-axis
+    axes.set_ylabel('Number of Individuals')  # Label the y-axis
     axes.legend(bbox_to_anchor=(.3, 1), fontsize=13, fancybox=False, shadow=False, frameon=False)  # Add a legend
     pyplot.savefig('out/temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
     pyplot.close()  # Close the plot to free memory
@@ -91,12 +91,12 @@ def plotDynamics(data): #MOVE AWAY
 mothSpawn = 0.15
 lightSpawn = 0.002
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(80,80),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(150,150),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 
 
 
 MyGrid.display(show_plot=True)
-iterations = 30 
+iterations = 100
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
