@@ -36,8 +36,8 @@ def newLightDies(grid,x,y):
 def newLightRandom(grid,x,y):
     # percentage that a new might appear
     # For now a filler % is 50
-    r = random.randint(1,10)
-    if r <=5:
+    r = random.random()
+    if r <=.05:
         grid[x, y] = 2
     else:
         pass
