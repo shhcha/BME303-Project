@@ -32,9 +32,9 @@ class c_Grid: #Class of numpy array, with graph and update func
         #print(self._CurrentState)
         if show_plot == True:
             fig,ax1 = pyplot.subplots(nrows=1,ncols=1, figsize=(16,9))
-            ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
-            cbar = pyplot.colorbar(label="", orientation="vertical", ticks=[0.33, 1, 1.66])  # Add a color bar for clarity
-            cbar.ax.set_yticklabels(['sky', 'moths', 'lights'])  # Set labels for the color bar (grass, zebras, lions)
+            g = ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
+            cbar = fig.colorbar(g, ax=ax1, label="", ticks=[0.3333, 1, 1.666])
+            cbar.ax.set_yticklabels(["Empty", "Moth", "Light"])
             ax1.set_title(f"Week:{self._Index}")
             ax1.set_xlabel("X Pos (.1 miles)")
             ax1.set_ylabel("Y Pos (.1 miles)")
