@@ -56,7 +56,7 @@ def findClosestEntity(grid:numpy.ndarray, mothPos:numpy.ndarray, entityToFind:st
     # Create shape for local use, determine which grid value to check for given input
     
     gridShape = grid.shape
-    maxDistance = 40
+    maxDistance = 35
     searchShape = (maxDistance,maxDistance)
 
     if entityToFind == 'L':
@@ -90,7 +90,7 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
     deltaX, deltaY = 0,0
     lightRelPos = findClosestEntity(grid, mothPos,'L')  # Find delta to closest light
     #print(lightRelPos)
-    max_movement = 4 # Change according to total size
+    max_movement = 3 # Change according to total size
     
     factorX = -1 if lightRelPos[0] < 0 else 1   #Setup directionality values
     factorY = -1 if lightRelPos[1] < 0 else 1   #

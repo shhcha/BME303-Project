@@ -3,14 +3,6 @@ import lights
 import moth
 import math
 
-
-
-
-def dimming():
-    pass
-def mothMove():
-    pass
-
 def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Moth:{x}:{y}")
     moth.tryMovement(newGrid, np.array([x,y]))

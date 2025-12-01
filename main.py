@@ -71,11 +71,7 @@ def create_gif():
     images = [imageio.imread(p) for p in plots]
     imageio.mimsave('out/graphs.gif', images, fps=5)
 
-def plotDynamics(data): #MOVE AWAY
-    # print(f"data[0] = {data[0]}")  TESTING
-    # print(f"data[1] = {data[1]}")
-    # print(f"data[2] = {data[2]}")
-    # print(f"data[3] = {data[3]}")
+def plotDynamics(data):
     
     fig, axes = pyplot.subplots(figsize=(7, 6))
     axes.plot(data[0], data[2], label='moths', color='red')  # Plot the moth population over time
@@ -86,29 +82,14 @@ def plotDynamics(data): #MOVE AWAY
     pyplot.savefig('out/temporalDynamics.png', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
     pyplot.close()  # Close the plot to free memory
 
-### Start Running
-
-#numpy.random.seed(0) #TESTING
 
 mothSpawn = 0.15
 lightSpawn = 0.002
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(20,20),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
-
-# def plotSpatial(data, fileNumber):
-#     cmap = colors.ListedColormap(['black', 'blue', 'red'])  # Define custom colors for grass, zebras, and lions
-#     pyplot.figure(figsize=(7, 6))
-#     pyplot.pcolor(data, cmap=cmap, edgecolors='k', linewidths=1, vmin=0, vmax=2)  # Plot the grid with boundaries
-#     pyplot.savefig('figure_' + str(fileNumber) + '.jpg', bbox_inches='tight',
-#         pad_inches=0.02)  # Save the figure as an image
-
-
-#     pyplot.close()  # Close the plot to free memory
-
-
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(100,100),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 
 MyGrid.display(show_plot=True)
-iterations = 10
+iterations = 100
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
