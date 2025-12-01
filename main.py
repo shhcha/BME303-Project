@@ -33,6 +33,8 @@ class c_Grid: #Class of numpy array, with graph and update func
         if show_plot == True:
             fig,ax1 = pyplot.subplots(nrows=1,ncols=1, figsize=(16,9))
             ax1.pcolor(self._CurrentState, cmap=self._ColorSet, edgecolor='#000000', alpha=0.7)
+            cbar = pyplot.colorbar(label="", orientation="vertical", ticks=[0.33, 1, 1.66])  # Add a color bar for clarity
+            cbar.ax.set_yticklabels(['sky', 'moths', 'lights'])  # Set labels for the color bar (grass, zebras, lions)
             ax1.set_title(f"Week:{self._Index}")
             ax1.set_xlabel("X Pos (.1 miles)")
             ax1.set_ylabel("Y Pos (.1 miles)")
@@ -81,7 +83,7 @@ def plotDynamics(data): #MOVE AWAY
     axes.set_xlabel('Time (Weeks)')  # Label the x-axis
     axes.set_ylabel('Number of Individuals')  # Label the y-axis
     axes.legend(bbox_to_anchor=(.3, 1), fontsize=13, fancybox=False, shadow=False, frameon=False)  # Add a legend
-    pyplot.savefig('out/temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
+    pyplot.savefig('out/temporalDynamics.png', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
     pyplot.close()  # Close the plot to free memory
 
 ### Start Running
@@ -91,12 +93,22 @@ def plotDynamics(data): #MOVE AWAY
 mothSpawn = 0.15
 lightSpawn = 0.002
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(150,150),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(20,20),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
+
+# def plotSpatial(data, fileNumber):
+#     cmap = colors.ListedColormap(['black', 'blue', 'red'])  # Define custom colors for grass, zebras, and lions
+#     pyplot.figure(figsize=(7, 6))
+#     pyplot.pcolor(data, cmap=cmap, edgecolors='k', linewidths=1, vmin=0, vmax=2)  # Plot the grid with boundaries
+#     pyplot.savefig('figure_' + str(fileNumber) + '.jpg', bbox_inches='tight',
+#         pad_inches=0.02)  # Save the figure as an image
+
+
+#     pyplot.close()  # Close the plot to free memory
 
 
 
 MyGrid.display(show_plot=True)
-iterations = 100
+iterations = 10
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
