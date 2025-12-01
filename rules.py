@@ -14,6 +14,8 @@ def mothMove():
 def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Moth:{x}:{y}")
     moth.tryMovement(newGrid, np.array([x,y]))
+    moth.tryDeath(newGrid, np.array([x,y]))
+    moth.tryBirth(newGrid, np.array([x,y]))
     pass
 def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Light:{x}:{y}")

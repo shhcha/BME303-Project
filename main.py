@@ -84,37 +84,19 @@ def plotDynamics(data): #MOVE AWAY
     pyplot.savefig('out/temporalDynamics.pdf', bbox_inches='tight', pad_inches=0.02)  # Save the temporal dynamics as a PDF
     pyplot.close()  # Close the plot to free memory
 
-# idk where to put this but this is code for the color bar
-def plotSpatial(data, fileNumber):
-    cmap = colors.ListedColormap(['black', 'blue', 'red'])  # Define custom colors for grass, zebras, and lions
-    pyplot.figure(figsize=(7, 6))
-    pyplot.pcolor(data, cmap=cmap, edgecolors='k', linewidths=1, vmin=0, vmax=2)  # Plot the grid with boundaries
-    cbar = pyplot.colorbar(label="", orientation="vertical", ticks=[0.33, 1, 1.66])  # Add a color bar for clarity
-    cbar.ax.set_yticklabels(['sky', 'moths', 'lights'])  # Set labels for the color bar (grass, zebras, lions)
-    pyplot.savefig('figure_' + str(fileNumber) + '.jpg', bbox_inches='tight',
-                pad_inches=0.02)  # Save the figure as an image
-    pyplot.close()  # Close the plot to free memory
-
 ### Start Running
 
 #numpy.random.seed(0) #TESTING
 
-mothSpawn = 0.2
-lightSpawn = 0.005
+mothSpawn = 0.15
+lightSpawn = 0.002
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(150,150),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
-# MyGrid = c_Grid(numpy.random.choice([0,1],(60,60),p=[0.965, 0.035]))
-# MyGrid = c_Grid(numpy.zeros((60,60)))
-#MyGrid._InitialState[25,25] = 2 
-# MyGrid._InitialState[30:,10] = 1
-# MyGrid._InitialState[30,15] = 1
-
-
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(100,100),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 
 
 
 MyGrid.display(show_plot=True)
-iterations = 100 
+iterations = 30 
 dynamics = numpy.zeros((4,iterations))
 
 for i in range(iterations):
