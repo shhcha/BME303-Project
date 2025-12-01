@@ -18,7 +18,7 @@ def newLightAdjacent(grid,x,y):
             else:
                 # here was the og generation: MyGrid = c_Grid(numpy.random.choice([0,1, 2],(30,30),p=[0.95, 0.025, 0.025])
                 r = random.random()
-                if r <= 0.0095: #filler chance is 5%
+                if r <= 0.011: #filler chance is 5%
                     grid[x + a, y + b] = 2
                 else:
                     continue
@@ -27,7 +27,7 @@ def newLightAdjacent(grid,x,y):
 def newLightDies(grid,x,y):
     # certain percentage that it'll turn black
     r = random.random()
-    if r <= 0.005: #just making the chance it'll turn black 10% as a filler
+    if r <= 0.004: #just making the chance it'll turn black 10% as a filler
         grid[x,y] = 0
     else:
         pass #we don't need to check the rows and columns since the update function will do that anyways

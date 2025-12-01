@@ -91,7 +91,7 @@ def plotDynamics(data): #MOVE AWAY
 mothSpawn = 0.15
 lightSpawn = 0.002
 
-MyGrid = c_Grid(numpy.random.choice([0,1, 2],(100,100),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
+MyGrid = c_Grid(numpy.random.choice([0,1, 2],(80,80),p=[(1-(mothSpawn+lightSpawn)), mothSpawn, lightSpawn]))
 
 
 

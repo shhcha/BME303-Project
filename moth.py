@@ -15,15 +15,15 @@ def tryDeath(grid:numpy.ndarray, mothPos:numpy.ndarray ):
 
 def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
     mothDist = findClosestEntity(grid, mothPos, entityToFind = 'M')
-    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=2:
+    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=3:
         # find a nearby 0 and replace it to be a 1 somehow
 
         # Maybe use this function to find the 0 and turn it into a 1?
         emptyDist = findClosestEntity(grid, mothPos, entityToFind = "E" )
-        r = random.randint(1,10)
+        r = random.random()
         # need to modify to have a probability dependent on the # of moths nearby
-        if math.sqrt((emptyDist[0] ** 2) + (emptyDist[1]**2)) >=2 and r >= 8:
-            grid[mothPos+emptyDist] = 1
+        if r <= 0.05:
+            grid[mothPos[0]+emptyDist[0],mothPos[1]+emptyDist[1]] = 1
         pass
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
         return 2
@@ -90,7 +90,7 @@ def findNextMove(grid:numpy.ndarray, mothPos:numpy.ndarray):
     deltaX, deltaY = 0,0
     lightRelPos = findClosestEntity(grid, mothPos,'L')  # Find delta to closest light
     #print(lightRelPos)
-    max_movement = 3 # Change according to total size
+    max_movement = 4 # Change according to total size
     
     factorX = -1 if lightRelPos[0] < 0 else 1   #Setup directionality values
     factorY = -1 if lightRelPos[1] < 0 else 1   #
