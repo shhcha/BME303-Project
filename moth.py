@@ -9,20 +9,20 @@ def tryDeath(grid:numpy.ndarray, mothPos:numpy.ndarray ):
         grid[mothPos[0],mothPos[1]] = 0
         return 0
     else:
-        if math.sqrt((lightDist[0])**2 + lightDist[1]**2) >= random.randint(1,100):
+        if math.sqrt((lightDist[0])**2 + lightDist[1]**2) <= random.randint(1,20):
             grid[mothPos[0],mothPos[1]] = 0
         return 1
 
 def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
     mothDist = findClosestEntity(grid, mothPos, entityToFind = 'M')
-    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=3:
+    if math.sqrt((mothDist[0])**2 + mothDist[1]**2) >=2:
         # find a nearby 0 and replace it to be a 1 somehow
 
         # Maybe use this function to find the 0 and turn it into a 1?
         emptyDist = findClosestEntity(grid, mothPos, entityToFind = "E" )
         r = random.random()
         # need to modify to have a probability dependent on the # of moths nearby
-        if r <= 0.05:
+        if r <= 0.08:
             grid[mothPos[0]+emptyDist[0],mothPos[1]+emptyDist[1]] = 1
         pass
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
