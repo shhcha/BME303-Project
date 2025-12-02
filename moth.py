@@ -9,7 +9,7 @@ def tryDeath(grid:numpy.ndarray, mothPos:numpy.ndarray ):
         grid[mothPos[0],mothPos[1]] = 0
         return 0
     else:
-        if math.sqrt((lightDist[0])**2 + lightDist[1]**2) <= random.randint(1,20):
+        if math.sqrt((lightDist[0])**2 + lightDist[1]**2) <= random.randint(1,25):
             grid[mothPos[0],mothPos[1]] = 0
         return 1
 
@@ -22,7 +22,7 @@ def tryBirth(grid:numpy.ndarray, mothPos:numpy.ndarray):
         emptyDist = findClosestEntity(grid, mothPos, entityToFind = "E" )
         r = random.random()
         # need to modify to have a probability dependent on the # of moths nearby
-        if r <= 0.08:
+        if r <= 0.14:
             grid[mothPos[0]+emptyDist[0],mothPos[1]+emptyDist[1]] = 1
         pass
     if math.sqrt((mothDist[0])**2 + mothDist[1]**2) <2:
@@ -46,9 +46,11 @@ def _Move(grid:numpy.ndarray, mothPos:numpy.ndarray, mothDeltaPos:numpy.ndarray)
         pass
 
 def tryMovement(grid:numpy.ndarray, mothPos:numpy.ndarray):
-    if not(_Move(grid, mothPos, findNextMove(grid, mothPos))):
+    desired_Move = findNextMove(grid, mothPos)
+    if not(_Move(grid, mothPos, desired_Move)):
         #print("Cannot Move to desired space, finding nearest empty space")
-        _Move(grid, mothPos, findNextMove(grid, mothPos)+findClosestEntity(grid=grid, mothPos=mothPos, entityToFind="E"))
+        dEmpty = findClosestEntity(grid=grid, mothPos=mothPos+desired_Move, entityToFind="E")
+        _Move(grid, mothPos, desired_Move+dEmpty)
 
 
 #Returns ndarray(x,y) delta to the nearest light 

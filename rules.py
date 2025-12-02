@@ -17,7 +17,7 @@ def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     return
 def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Empty:{x}:{y}")
-    lights.newLightRandom()
+    lights.newLightRandom(newGrid, x, y)
     return
     
 
