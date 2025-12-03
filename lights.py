@@ -2,7 +2,7 @@ import numpy as np
 import random
 # Environemnt Varibales
 
-ENVIRONMENT = "URBAN"   # "URBAN" or "RURAL"
+ENVIRONMENT = "RURAL"   # "URBAN" or "RURAL"
 
 if ENVIRONMENT == "RURAL":
     LIGHT_ADJACENT = 0.003
