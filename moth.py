@@ -5,8 +5,8 @@ import random
 ENVIRONMENT = "RURAL"   # "URBAN" or "RURAL"
 
 if ENVIRONMENT == "RURAL":
-    BIRTH_PROB = 0.25
-    NATURAL_DEATH = 0.01
+    BIRTH_PROB = 0.32
+    NATURAL_DEATH = 0.008
     
     # Light effect = LIGHT_BOOST / (dist^2 + 1)
     LIGHT_MORTALITY_BOOST = 0.35   # rural lights less harmful
