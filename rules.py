@@ -5,19 +5,20 @@ import math
 
 def updateMoth(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Moth:{x}:{y}")
-    moth.tryMovement(newGrid, np.array([x,y]))
-    moth.tryDeath(newGrid, np.array([x,y]))
-    moth.tryBirth(newGrid, np.array([x,y]))
+    moth.tryMovement(oldGrid, newGrid, np.array([x,y]))
+    moth.tryDeath(oldGrid, newGrid, np.array([x,y]))
+    moth.tryBirth(oldGrid, newGrid, np.array([x,y]))
     pass
 def updateLight(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
+    newGrid[x,y] =2
     #print(f"Updating Light:{x}:{y}")
     #lights.newLightAdjacent(newGrid, x, y)
-    lights.newLightDies(newGrid, x, y)
-    lights.newLightAdjacent(newGrid, x, y)
+    lights.newLightDies(oldGrid, newGrid, x, y)
+    lights.newLightAdjacent(oldGrid, newGrid, x, y)
     return
 def updateEmpty(oldGrid:np.ndarray, newGrid:np.ndarray,x:int, y:int):
     #print(f"Updating Empty:{x}:{y}")
-    lights.newLightRandom(newGrid, x, y)
+    lights.newLightRandom(oldGrid, newGrid, x, y)
     return
     
 

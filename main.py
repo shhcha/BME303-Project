@@ -43,7 +43,7 @@ class c_Grid: #Class of numpy array, with graph and update func
     
 
     def update(self, dataPool:numpy.ndarray):
-        newState = self._CurrentState.copy()    # Setup new data
+        newState = numpy.zeros(self._CurrentState.shape)    # Setup new data
 
         dP = rules.update(self._CurrentState, newState)
         #print(f"returned: {dP}")
